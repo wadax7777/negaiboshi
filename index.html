@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>negaiboshi.site</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css?v=2">
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+<div class="shooting"></div>
+
+<div class="wrap">
+
+  <div class="logo">
+    NEGAIBOSHI.SITE
+  </div>
+
+  <div class="mainTitle">
+    こんばんは。<br>
+    今夜も、星たちの時間へ。
+  </div>
+
+  <div class="subTitle">
+    雨の日も、風の日も。<br>
+    空の向こうには、静かな宇宙があります。
+  </div>
+
+  <!-- メッセージ -->
+
+  <div class="card">
+
+    <div class="label">
+      今夜のメッセージ
+    </div>
+
+    <div class="message" id="message">
+      今夜の福岡は、静かな夜です。<br>
+      遠い星の光に、少しだけ心を預けてみませんか。
+    </div>
+
+    <div class="buttonArea">
+      <button onclick="changeMessage('rain')">☔ 雨</button>
+      <button onclick="changeMessage('wind')">🍃 風</button>
+      <button onclick="changeMessage('star')">🌌 星空</button>
+    </div>
+
+  </div>
+
+
+
+<!-- 今日の空（ライブカメラ） -->
+
+<div class="card skyLiveCard">
+
+    <div class="skyLiveHead">
+
+        <div>
+
+            <div class="label">
+                今日の空
+            </div>
+
+            <div class="skyLiveTitle">
+                福岡の夜景
+            </div>
+
+        </div>
+
+        <div class="liveMark">
+            <span class="liveDot"></span>
+            LIVE
+        </div>
+
+    </div>
+
+    <div class="skyCamera">
+
+       <img
+    id="skyLiveImage"
+    src="image/fukuoka-night.jpg"
+    alt="福岡ライブカメラ">
+
+        <div class="skyShade"></div>
+
+        <!-- 天気 -->
+
+        <div class="skyWeather">
+
+            ☁ 曇り<br>
+
+            27℃<br>
+
+            湿度82%
+
+        </div>
+
+        <!-- 場所 -->
+
+        <div class="skyLocation">
+
+            📍 福岡市
+
+        </div>
+
+    
+
+      
+
+    </div>
+
+    <!-- 下部情報 -->
+
+   <div class="skyInfoGrid">
+
+    <div class="skyInfo">
+
+        <div class="skyInfoLabel">
+            ☁ 天気
+        </div>
+
+        <div class="skyInfoValue">
+            27℃
+        </div>
+
+        <div class="flowerSeason">
+            曇り
+        </div>
+
+    </div>
+
+    <div class="skyInfo">
+
+        <div class="skyInfoLabel">
+            🌙 今日の月
+        </div>
+
+        <div class="skyInfoValue">
+            🌙
+        </div>
+
+        <div class="flowerSeason">
+            月齢18.2
+        </div>
+
+    </div>
+
+    <div class="skyInfo">
+
+        <div class="skyInfoLabel">
+            🛰 ISS情報
+        </div>
+
+        <div class="skyInfoValue">
+            22:28
+        </div>
+
+        <div class="flowerSeason">
+            福岡上空
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- ボタン -->
+
+    <div class="skyButtonArea">
+
+        <button
+            type="button"
+            class="skyRefreshBtn"
+            onclick="refreshSkyImage()">
+
+            ↻ ライブ更新
+
+        </button>
+
+        <a
+            href="iss/"
+            class="skyIssBtn">
+
+            🌍 ISSリアルタイム地図
+
+        </a>
+
+    </div>
+
+    <!-- 更新時刻 -->
+
+    <div class="skyNote">
+
+        最終更新：
+        <span id="lastUpdate"></span>
+
+        （約30分ごと更新）
+
+    </div>
+
+</div>
+
+
+
+
+  <!-- 今日の風景 -->
+
+  <a href="landscape/" class="mini flowerCard miniLink">
+
+    <div class="miniTitle">
+      🏞 今日の風景
+    </div>
+
+    <img
+      src="landscape/fukuoka.jpg"
+      class="flowerImage"
+      alt="福岡タワー">
+
+    <div class="flowerName">
+      福岡タワー
+    </div>
+
+    <div class="flowerWordTitle">
+      今日の夜景
+    </div>
+
+    <div class="flowerWord">
+      福岡市
+    </div>
+
+    <div class="flowerSeason">
+      ▶ 詳しく見る
+    </div>
+
+  </a>
+
+
+  <!-- 今日の花 -->
+
+  <a href="flower/" class="mini flowerCard miniLink">
+
+    <div class="miniTitle">
+      🌸 今日の花
+    </div>
+
+    <img
+      src="flowers/himawari.jpg"
+      class="flowerImage"
+      alt="ひまわり">
+
+    <div class="flowerName">
+      ひまわり
+    </div>
+
+    <div class="flowerWordTitle">
+      花言葉
+    </div>
+
+    <div class="flowerWord">
+      「憧れ」
+    </div>
+
+    <div class="flowerSeason">
+      ▶ 詳しく見る
+    </div>
+
+  </a>
+
+
+  <!-- これからの夜空 -->
+
+  <a href="sky/" class="mini flowerCard miniLink">
+
+    <div class="miniTitle">
+      ✨ これからの夜空
+    </div>
+
+<img
+    src="sky/perseus.jpg"
+    class="flowerImage"
+    alt="ペルセウス座流星群">
+
+<div class="flowerName">
+    ペルセウス座流星群
+</div>
+
+<div class="flowerWordTitle">
+    天体イベント
+</div>
+
+<div class="flowerWord">
+    8月の流星群
+</div>
+
+<div class="flowerSeason">
+    ▶ 詳しく見る
+</div>
+
+</a>
+
+</div><!-- grid終了 -->
+
+
+
+
+
+
+
+<!-- 星の物語 -->
+
+  <div class="card">
+
+    <div class="label">
+      星の物語
+    </div>
+
+    <div class="storyTitle">
+      遠い星の旅
+    </div>
+
+    <div class="story">
+      遠い星の光は、<br>
+      何年も何千年も旅をして、<br>
+      今夜、あなたの目に届きます。<br><br>
+
+      だから今夜は、<br>
+      急がなくても大丈夫です。
+    </div>
+
+  </div>
+
+  <!-- 読み聞かせ -->
+
+  <div class="card">
+
+    <div class="label">
+      読み聞かせ
+    </div>
+
+    <div class="storyTitle">
+      「南十字星の見える夜」
+    </div>
+
+    <div class="story">
+      山の向こうに、静かな風が吹いていました。<br>
+      小さな焚き火の前で、おじさんは星を見上げています。<br><br>
+
+      「願い事はな、空に消えるんじゃない。」<br><br>
+
+      そう言って、ゆっくり笑いました。
+    </div>
+
+    <br>
+
+    <button class="playBtn">
+      ▶ 読み聞かせをはじめる
+    </button>
+
+  </div>
+
+  <!-- 今日の出来事 -->
+
+  <div class="card">
+
+    <div class="label">
+      今日のできごと
+    </div>
+
+    <div class="newsItem">
+      <div class="newsDate">
+        今日の空
+      </div>
+      <div class="newsText">
+        福岡では静かな夜空が広がっています。
+        南の空にはオリオン座が見えています。
+      </div>
+    </div>
+
+    <div class="newsItem">
+      <div class="newsDate">
+        小さな幸せ
+      </div>
+      <div class="newsText">
+        コンビニの帰り道、
+        ふと見上げた空に流れ星。
+      </div>
+    </div>
+
+    <div class="newsItem">
+      <div class="newsDate">
+        今日の言葉
+      </div>
+      <div class="newsText">
+        「ゆっくりでも、ちゃんと進んでいます。」
+      </div>
+    </div>
+
+  </div>
+<!-- 星に願いを -->
+
+<div class="card wishCard">
+
+  <div class="label">
+    星に願いを
+  </div>
+
+  <div class="wishTitle">
+    願いは、
+    星へ届きます。
+  </div>
+
+  <div class="wishText">
+
+    スマホを夜空へ向けて、<br>
+    あなたの願いを込めてみませんか。<br><br>
+
+    流れ星、願いカード、<br>
+    星日記の世界へ。
+
+  </div>
+
+  <img
+  src="wish_preview.jpg"
+  class="wishImage">
+
+  <br><br>
+
+  <a
+  href="wish/"
+  class="wishBtn">
+
+    ✨ 星に願いを開く
+
+  </a>
+
+</div>
+  <!-- 深夜ラジオ -->
+
+  <div class="card audioBox">
+
+    <div class="audioTitle">
+      📻 深夜ラジオモード
+    </div>
+
+    <div class="audioText">
+      小さな声と、静かな音。<br>
+      まるで深夜放送のような時間。
+    </div>
+
+    <button class="playBtn">
+      静かな時間をはじめる
+    </button>
+
+  </div>
+
+  <div class="footer">
+    negaiboshi.site<br>
+    星を見上げる、静かな場所。
+  </div>
+
+</div>
+
+<script src="script.js?v=2"></script>
+
+</body>
+</html>
