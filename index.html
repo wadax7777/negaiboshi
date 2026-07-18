@@ -2,470 +2,134 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>negaiboshi.site</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;500;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css?v=2">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#020713">
+<meta name="description" content="3D地球、月、ISSを静かに楽しむ宇宙サイト">
+<title>NEGAIBOSHI.SITE｜今夜も、星たちの時間へ。</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://tile.openstreetmap.org">
+<link rel="preconnect" href="https://cyberjapandata.gsi.go.jp">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium@1.130.0/Build/Cesium/Widgets/widgets.css">
+<link rel="stylesheet" href="style.css?v=80">
+<link rel="stylesheet" href="space-dock-final.css?v=5.0">
+<link rel="stylesheet" href="ver3.css?v=5.0.0">
 </head>
-
 <body>
+<div class="stars" aria-hidden="true"></div>
+<div id="shootingStars" class="shooting-stars" aria-hidden="true"></div>
 
-<div class="stars" id="stars"></div>
-<div class="shooting"></div>
-
-<div class="wrap">
-
-  <div class="logo">
-    NEGAIBOSHI.SITE
+<header class="site-header">
+  <a class="logo" href="#top"><span>✦</span><strong>NEGAIBOSHI.SITE</strong><small>今夜も、星たちの時間へ。</small></a>
+  <nav>
+    <a class="active" href="#top">⌂ ホーム</a>
+    <a href="#iss">🛰 ISSリアルタイム</a>
+  </nav>
+  <div class="header-clock">
+    <small id="todayDate">----.--.--</small>
+    <strong id="currentTime">--:--:--</strong>
+    <span id="headerHomeName">お住まい未登録</span>
   </div>
+</header>
 
-  <div class="mainTitle">
-    こんばんは。<br>
-    今夜も、星たちの時間へ。
+<main id="top">
+  <section class="hero-section">
+    <div class="hero-copy">
+      <p class="eyebrow">A QUIET WINDOW TO THE UNIVERSE</p>
+      <h1>こんばんは。<br>今夜も、星たちの時間へ。</h1>
+      <p class="lead">何千年、何万年もの時を旅した光を、<br>静かに眺めてみませんか。</p>
+      <a class="text-link" href="#iss">宇宙から地球を眺める <span>→</span></a>
+    </div>
+
+    <div class="earth-stage" id="iss">
+      <div id="cesiumContainer" class="cesium-container" aria-label="国土地理院航空写真対応3D地球"></div>
+      <div class="globe-help">ドラッグ：回転　ホイール：拡大・縮小</div>
+<div class="ambient-brand"><span>✦</span> NEGAIBOSHI.SITE <b id="ambientClock">--:--:--</b></div>
+      <div class="earth-glow" aria-hidden="true"></div>
+
+      <div class="space-telop" id="spaceTelop"><b>🌍 ねがいぼし.site Ver.11.6 CENTER MAX</b><span id="spaceTelopText">地球全体から日本へ近づくと、国土地理院の航空写真へ切り替わります。</span></div>
+      <div class="cloud-veil" id="cloudVeil" aria-hidden="true"></div>
+      <div class="iss-panel">
+        <div><small>現在位置 <b>(LIVE)</b></small><strong id="issCoords">取得中…</strong></div>
+        <div><small>速度</small><strong id="issSpeed">-- km/h</strong></div>
+        <div><small>高度</small><strong id="issAlt">-- km</strong></div>
+        <div><small><span id="distanceHomeLabel">お住まい</span>からの距離</small><strong id="issDistance">-- km</strong></div>
+        <div><small>星夜判定</small><strong id="issSide">確認中</strong></div>
+        <p id="issSummary">ISSの現在位置を受信しています。</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+      <div id="spaceDockV2" class="space-dock-final" aria-label="宇宙ナビゲーション">
+        <button id="showEarth" type="button">🌍 地球全体</button>
+        <button id="showJapan" type="button">🗾 日本</button>
+        <button id="showKyushu" type="button">🏠 お住まい</button>
+        <button id="mapZoomUp" type="button">🔭 地図UP</button>
+        <button id="nightLights" type="button">🌙 夜の地球</button>
+        <button id="showMoon" type="button">🌕 月・クレーター</button>
+        <button id="mysteryTour" class="mystery-button" type="button">❓ ミステリーツアー</button>
+        <button id="editHome" type="button">⚙ 登録変更</button>
+        <button id="followIss" type="button">🛰 ISS追跡</button>
+        <button id="ambientMode" class="ambient-button" type="button">🌌 Ambient</button>
+        <button id="spaceLetter" class="letter-button" type="button">💌 こうのとり便</button>
+      </div>
+
+
+
+<div class="home-modal" id="homeModal" hidden>
+  <div class="home-dialog" role="dialog" aria-modal="true" aria-labelledby="homeTitle">
+    <button class="home-close" id="homeClose" type="button" aria-label="閉じる">×</button>
+    <div class="home-icon">🌍</div>
+    <p class="eyebrow">YOUR PLACE ON EARTH</p>
+    <h2 id="homeTitle">お住まいを登録</h2>
+    <p>登録した街に地球儀のポイントを置き、ISSまでの距離や星空予報を表示します。情報はこの端末のブラウザだけに保存されます。</p>
+    <label for="homeQuery">都道府県・市区町村</label>
+    <div class="home-search-row">
+      <input id="homeQuery" type="text" placeholder="例：福岡県福岡市" autocomplete="address-level2">
+      <button id="searchHome" type="button">場所を検索</button>
+    </div>
+    <button id="useCurrentLocation" class="current-location-button" type="button">📍 現在地を利用する</button>
+    <p class="home-status" id="homeStatus">市区町村までの登録がおすすめです。</p>
+    <div class="home-result" id="homeResult" hidden>
+      <strong id="homeResultName"></strong>
+      <small id="homeResultCoords"></small>
+      <button id="saveHome" type="button">この場所を登録</button>
+    </div>
   </div>
-
-  <div class="subTitle">
-    雨の日も、風の日も。<br>
-    空の向こうには、静かな宇宙があります。
-  </div>
-
-  <!-- メッセージ -->
-
-  <div class="card">
-
-    <div class="label">
-      今夜のメッセージ
-    </div>
-
-    <div class="message" id="message">
-      今夜の福岡は、静かな夜です。<br>
-      遠い星の光に、少しだけ心を預けてみませんか。
-    </div>
-
-    <div class="buttonArea">
-      <button onclick="changeMessage('rain')">☔ 雨</button>
-      <button onclick="changeMessage('wind')">🍃 風</button>
-      <button onclick="changeMessage('star')">🌌 星空</button>
-    </div>
-
-  </div>
-
-
-
-<!-- 今日の空（ライブカメラ） -->
-
-<div class="card skyLiveCard">
-
-    <div class="skyLiveHead">
-
-        <div>
-
-            <div class="label">
-                今日の空
-            </div>
-
-            <div class="skyLiveTitle">
-                福岡の夜景
-            </div>
-
-        </div>
-
-        <div class="liveMark">
-            <span class="liveDot"></span>
-            LIVE
-        </div>
-
-    </div>
-
-    <div class="skyCamera">
-
-       <img
-    id="skyLiveImage"
-    src="image/fukuoka-night.jpg"
-    alt="福岡ライブカメラ">
-
-        <div class="skyShade"></div>
-
-        <!-- 天気 -->
-
-        <div class="skyWeather">
-
-            ☁ 曇り<br>
-
-            27℃<br>
-
-            湿度82%
-
-        </div>
-
-        <!-- 場所 -->
-
-        <div class="skyLocation">
-
-            📍 福岡市
-
-        </div>
-
-    
-
-      
-
-    </div>
-
-    <!-- 下部情報 -->
-
-   <div class="skyInfoGrid">
-
-    <div class="skyInfo">
-
-        <div class="skyInfoLabel">
-            ☁ 天気
-        </div>
-
-        <div class="skyInfoValue">
-            27℃
-        </div>
-
-        <div class="flowerSeason">
-            曇り
-        </div>
-
-    </div>
-
-    <div class="skyInfo">
-
-        <div class="skyInfoLabel">
-            🌙 今日の月
-        </div>
-
-        <div class="skyInfoValue">
-            🌙
-        </div>
-
-        <div class="flowerSeason">
-            月齢18.2
-        </div>
-
-    </div>
-
-    <div class="skyInfo">
-
-        <div class="skyInfoLabel">
-            🛰 ISS情報
-        </div>
-
-        <div class="skyInfoValue">
-            22:28
-        </div>
-
-        <div class="flowerSeason">
-            福岡上空
-        </div>
-
-    </div>
-
 </div>
 
-    <!-- ボタン -->
-
-    <div class="skyButtonArea">
-
-        <button
-            type="button"
-            class="skyRefreshBtn"
-            onclick="refreshSkyImage()">
-
-            ↻ ライブ更新
-
-        </button>
-
-        <a
-            href="iss/"
-            class="skyIssBtn">
-
-            🌍 ISSリアルタイム地図
-
-        </a>
-
-    </div>
-
-    <!-- 更新時刻 -->
-
-    <div class="skyNote">
-
-        最終更新：
-        <span id="lastUpdate"></span>
-
-        （約30分ごと更新）
-
-    </div>
-
-</div>
-
-
-
-
-  <!-- 今日の風景 -->
-
-  <a href="landscape/" class="mini flowerCard miniLink">
-
-    <div class="miniTitle">
-      🏞 今日の風景
-    </div>
-
-    <img
-      src="landscape/fukuoka.jpg"
-      class="flowerImage"
-      alt="福岡タワー">
-
-    <div class="flowerName">
-      福岡タワー
-    </div>
-
-    <div class="flowerWordTitle">
-      今日の夜景
-    </div>
-
-    <div class="flowerWord">
-      福岡市
-    </div>
-
-    <div class="flowerSeason">
-      ▶ 詳しく見る
-    </div>
-
-  </a>
-
-
-  <!-- 今日の花 -->
-
-  <a href="flower/" class="mini flowerCard miniLink">
-
-    <div class="miniTitle">
-      🌸 今日の花
-    </div>
-
-    <img
-      src="flowers/himawari.jpg"
-      class="flowerImage"
-      alt="ひまわり">
-
-    <div class="flowerName">
-      ひまわり
-    </div>
-
-    <div class="flowerWordTitle">
-      花言葉
-    </div>
-
-    <div class="flowerWord">
-      「憧れ」
-    </div>
-
-    <div class="flowerSeason">
-      ▶ 詳しく見る
-    </div>
-
-  </a>
-
-
-  <!-- これからの夜空 -->
-
-  <a href="sky/" class="mini flowerCard miniLink">
-
-    <div class="miniTitle">
-      ✨ これからの夜空
-    </div>
-
-<img
-    src="sky/perseus.jpg"
-    class="flowerImage"
-    alt="ペルセウス座流星群">
-
-<div class="flowerName">
-    ペルセウス座流星群
-</div>
-
-<div class="flowerWordTitle">
-    天体イベント
-</div>
-
-<div class="flowerWord">
-    8月の流星群
-</div>
-
-<div class="flowerSeason">
-    ▶ 詳しく見る
-</div>
-
-</a>
-
-</div><!-- grid終了 -->
-
-
-
-
-
-
-
-<!-- 星の物語 -->
-
-  <div class="card">
-
-    <div class="label">
-      星の物語
-    </div>
-
-    <div class="storyTitle">
-      遠い星の旅
-    </div>
-
-    <div class="story">
-      遠い星の光は、<br>
-      何年も何千年も旅をして、<br>
-      今夜、あなたの目に届きます。<br><br>
-
-      だから今夜は、<br>
-      急がなくても大丈夫です。
-    </div>
-
-  </div>
-
-  <!-- 読み聞かせ -->
-
-  <div class="card">
-
-    <div class="label">
-      読み聞かせ
-    </div>
-
-    <div class="storyTitle">
-      「南十字星の見える夜」
-    </div>
-
-    <div class="story">
-      山の向こうに、静かな風が吹いていました。<br>
-      小さな焚き火の前で、おじさんは星を見上げています。<br><br>
-
-      「願い事はな、空に消えるんじゃない。」<br><br>
-
-      そう言って、ゆっくり笑いました。
-    </div>
-
-    <br>
-
-    <button class="playBtn">
-      ▶ 読み聞かせをはじめる
+<div class="letter-modal" id="letterModal" hidden>
+  <div class="letter-space" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+    <button class="letter-close" id="letterClose" type="button" aria-label="閉じる">×</button>
+    <div class="kounotori-flight" aria-hidden="true"><span class="iss-mini">🛰️</span><span class="flight-line"></span><span class="kounotori-mini">🚀</span></div>
+    <p class="eyebrow">A LETTER FROM ORBIT</p>
+    <h2 id="letterTitle">幸せを運ぶ こうのとり便</h2>
+    <button class="space-envelope" id="openSpaceLetter" type="button" aria-label="宇宙からの手紙を開く">
+      <span class="envelope-flap"></span><span class="envelope-body">TO YOU</span>
     </button>
-
+    <article class="space-letter-paper" id="spaceLetterPaper" hidden>
+      <p>今夜、地球は静かな青い光に包まれています。</p>
+      <p>忙しい一日の終わりに、ほんの少しだけ空を見上げてみてください。</p>
+      <p>あなたが好きな星は、今日も変わらず輝いています。</p>
+      <p class="letter-sign">宇宙船 NEGAIBOSHI<br>幸せを運ぶ こうのとり便より</p>
+    </article>
+    <p class="letter-hint" id="letterHint">封筒を押すと、宇宙からのお手紙が開きます。</p>
   </div>
-
-  <!-- 今日の出来事 -->
-
-  <div class="card">
-
-    <div class="label">
-      今日のできごと
-    </div>
-
-    <div class="newsItem">
-      <div class="newsDate">
-        今日の空
-      </div>
-      <div class="newsText">
-        福岡では静かな夜空が広がっています。
-        南の空にはオリオン座が見えています。
-      </div>
-    </div>
-
-    <div class="newsItem">
-      <div class="newsDate">
-        小さな幸せ
-      </div>
-      <div class="newsText">
-        コンビニの帰り道、
-        ふと見上げた空に流れ星。
-      </div>
-    </div>
-
-    <div class="newsItem">
-      <div class="newsDate">
-        今日の言葉
-      </div>
-      <div class="newsText">
-        「ゆっくりでも、ちゃんと進んでいます。」
-      </div>
-    </div>
-
-  </div>
-<!-- 星に願いを -->
-
-<div class="card wishCard">
-
-  <div class="label">
-    星に願いを
-  </div>
-
-  <div class="wishTitle">
-    願いは、
-    星へ届きます。
-  </div>
-
-  <div class="wishText">
-
-    スマホを夜空へ向けて、<br>
-    あなたの願いを込めてみませんか。<br><br>
-
-    流れ星、願いカード、<br>
-    星日記の世界へ。
-
-  </div>
-
-  <img
-  src="wish_preview.jpg"
-  class="wishImage">
-
-  <br><br>
-
-  <a
-  href="wish/"
-  class="wishBtn">
-
-    ✨ 星に願いを開く
-
-  </a>
-
-</div>
-  <!-- 深夜ラジオ -->
-
-  <div class="card audioBox">
-
-    <div class="audioTitle">
-      📻 深夜ラジオモード
-    </div>
-
-    <div class="audioText">
-      小さな声と、静かな音。<br>
-      まるで深夜放送のような時間。
-    </div>
-
-    <button class="playBtn">
-      静かな時間をはじめる
-    </button>
-
-  </div>
-
-  <div class="footer">
-    negaiboshi.site<br>
-    星を見上げる、静かな場所。
-  </div>
-
 </div>
 
-<script src="script.js?v=2"></script>
+<div class="modal" id="imageModal" hidden>
+  <button id="modalClose" type="button">×</button>
+  <img id="modalImage" alt="">
+</div>
 
+<footer>
+  <span>データ提供：Where the ISS at? / ArcGIS・Bing（任意） / 国土地理院 全国最新写真 / NASA LROC / CesiumJS</span>
+  <span>© 2026 NEGAIBOSHI.SITE Ver.13 NASA EDITION — 宇宙を旅する動くインテリア</span>
+</footer>
+
+<script>window.CESIUM_BASE_URL="https://cdn.jsdelivr.net/npm/cesium@1.130.0/Build/Cesium/";</script>
+<script src="https://cdn.jsdelivr.net/npm/cesium@1.130.0/Build/Cesium/Cesium.js"></script>
+<script src="config-public.js?v=12.0.0"></script>
+<script src="script.js?v=12.0.0"></script>
 </body>
 </html>

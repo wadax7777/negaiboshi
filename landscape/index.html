@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="日本各地の夜景・空港ライブを、NEGAIBOSHI.SITEの中で楽しむページです。">
+<title>日本のライブカメラ｜NEGAIBOSHI.SITE</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+<div class="stars" id="stars" aria-hidden="true"></div>
+<div class="shooting" aria-hidden="true"></div>
+
+<main class="page">
+
+  <header class="hero">
+    <a href="../" class="backLink">← NEGAIBOSHI.SITEへ戻る</a>
+    <div class="eyebrow">🇯🇵 日本の空を旅する</div>
+    <h1>日本のライブカメラ</h1>
+    <p>
+      夜景、街、空港。<br>
+      気になる場所を選ぶと、このページの中でライブ映像を楽しめます。
+    </p>
+  </header>
+
+  <section class="viewerCard" aria-labelledby="viewerTitle">
+
+    <div class="viewerHead">
+      <div>
+        <div class="sectionLabel">🔴 選択中のライブ</div>
+        <h2 id="viewerTitle">札幌 もいわ山</h2>
+        <p id="viewerPlace">📍 北海道・札幌</p>
+      </div>
+
+      <a
+        id="openYoutube"
+        class="youtubeLink"
+        href="https://www.youtube.com/watch?v=KZsB8vpf0yg"
+        target="_blank"
+        rel="noopener noreferrer">
+        ↗ YouTubeで開く
+      </a>
+    </div>
+
+    <div class="videoShell">
+      <div class="videoLoading" id="videoLoading">
+        <div class="loadingMoon">🌙</div>
+        <div>ライブ映像を読み込み中…</div>
+      </div>
+
+      <iframe
+        id="liveFrame"
+        src="https://www.youtube-nocookie.com/embed/KZsB8vpf0yg?rel=0"
+        title="札幌 もいわ山 ライブカメラ"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="viewerFoot">
+      <div id="viewerDescription">
+        札幌市街を山の上から眺めるライブカメラです。
+      </div>
+
+      <div class="viewerActions">
+        <button type="button" id="reloadVideo">🔄 再読み込み</button>
+        <button type="button" id="fullscreenVideo">⛶ 大きく見る</button>
+      </div>
+    </div>
+
+    <div class="embedNotice">
+      配信者が埋め込みを許可していない場合は、この枠では再生できません。
+      その際は「YouTubeで開く」をご利用ください。
+    </div>
+
+  </section>
+
+  <section class="liveSection">
+
+    <div class="sectionHead">
+      <div>
+        <div class="sectionLabel">✨ ライブを選ぶ</div>
+        <h2>今夜は、どこへ行きますか。</h2>
+      </div>
+      <div class="count">7 LIVE CAMERAS</div>
+    </div>
+
+    <div class="liveGrid" id="liveGrid">
+
+      <button
+        type="button"
+        class="liveCard active"
+        data-video-id="KZsB8vpf0yg"
+        data-title="札幌 もいわ山"
+        data-place="北海道・札幌"
+        data-description="札幌市街を山の上から眺めるライブカメラです。"
+        data-url="https://www.youtube.com/watch?v=KZsB8vpf0yg">
+
+        <div class="cardVisual visual-mountain">
+          <span class="cardType">🗻 山からの夜景</span>
+          <span class="playMark">▶</span>
+        </div>
+
+        <div class="cardBody">
+          <h3>札幌 もいわ山</h3>
+          <p>札幌の街を見下ろす、山上からのライブ映像。</p>
+          <div class="cardFooter">
+            <span>北海道・札幌</span>
+            <strong>この画面で見る</strong>
+          </div>
+        </div>
+      </button>
+
+      <button
+        type="button"
+        class="liveCard"
+        data-video-id="ZIL7jAWQdv0"
+        data-title="福岡 天神北"
+        data-place="福岡県・福岡市"
+        data-description="天神北周辺の街並みと空を眺めるライブカメラです。"
+        data-url="https://www.youtube.com/watch?v=ZIL7jAWQdv0">
+
+        <div class="cardVisual visual-city">
+          <span class="cardType">🌆 都市の夜景</span>
+          <span class="playMark">▶</span>
+        </div>
+
+        <div class="cardBody">
+          <h3>福岡 天神北</h3>
+          <p>福岡の街並みと空の変化を楽しめます。</p>
+          <div class="cardFooter">
+            <span>福岡県・福岡市</span>
+            <strong>この画面で見る</strong>
+          </div>
+        </div>
+      </button>
+
+      <button
+        type="button"
+        class="liveCard"
+        data-video-id="EkH8SihBx9E"
+        data-title="テレQ ライブ配信"
+        data-place="福岡県・福岡市"
+        data-description="福岡の空や街の様子を、テレビ局の配信で楽しめます。"
+        data-url="https://www.youtube.com/watch?v=EkH8SihBx9E">
+
+        <div class="cardVisual visual-broadcast">
+          <span class="cardType">📺 街のライブ</span>
+          <span class="playMark">▶</span>
+        </div>
+
+        <div class="cardBody">
+          <h3>テレQ ライブ配信</h3>
+          <p>福岡市中心部の空や街の様子を眺めます。</p>
+          <div class="cardFooter">
+            <span>福岡県・福岡市</span>
+            <strong>この画面で見る</strong>
+          </div>
+        </div>
+      </button>
+
+      <button
+        type="button"
+        class="liveCard"
+        data-video-id="CzgSFUAbE9s"
+        data-title="福岡空港ライブカメラ"
+        data-place="福岡県・福岡市"
+        data-description="飛行機の離着陸と、夜の空港の灯りを眺めます。"
+        data-url="https://www.youtube.com/watch?v=CzgSFUAbE9s">
+
+        <div class="cardVisual visual-airport">
+          <span class="cardType">✈ 空港ライブ</span>
+          <span class="playMark">▶</span>
+        </div>
+
+        <div class="cardBody">
+          <h3>福岡空港</h3>
+          <p>飛行機の離着陸と滑走路の灯りを楽しめます。</p>
+          <div class="cardFooter">
+            <span>福岡県・福岡市</span>
+            <strong>この画面で見る</strong>
+          </div>
+        </div>
+      </button>
+
+      <button
+        type="button"
+        class="liveCard"
+        data-video-id="rGtE0C62fss"
+        data-title="阿蘇くまもと空港"
+        data-place="熊本県"
+        data-description="阿蘇の空の下で、飛行機が行き交う様子を楽しめます。"
+        data-url="https://www.youtube.com/watch?v=rGtE0C62fss">
+
+        <div class="cardVisual visual-kumamoto">
+          <span class="cardType">✈ 空港ライブ</span>
+          <span class="playMark">▶</span>
+        </div>
+
+        <div class="cardBody">
+          <h3>阿蘇くまもと空港</h3>
+          <p>阿蘇を望む空港のライブ映像です。</p>
+          <div class="cardFooter">
+            <span>熊本県</span>
+            <strong>この画面で見る</strong>
+          </div>
+        </div>
+      </button>
+
+      <button
+        type="button"
+        class="liveCard"
+        data-video-id="zNahac5x0Tw"
+        data-title="長崎空港"
+        data-place="長崎県・大村市"
+        data-description="海に囲まれた空港の景色と、離着陸を眺めます。"
+        data-url="https://www.youtube.com/watch?v=zNahac5x0Tw">
+
+        <div class="cardVisual visual-nagasaki">
+          <span class="cardType">✈ 空港ライブ</span>
+          <span class="playMark">▶</span>
+        </div>
+
+        <div class="cardBody">
+          <h3>長崎空港</h3>
+          <p>海に囲まれた空港の静かな風景です。</p>
+          <div class="cardFooter">
+            <span>長崎県・大村市</span>
+            <strong>この画面で見る</strong>
+          </div>
+        </div>
+      </button>
+
+      <button
+        type="button"
+        class="liveCard"
+        data-video-id="uuMhOREzUYA"
+        data-title="福岡空港＆ほかのライブカメラ"
+        data-place="福岡県"
+        data-description="福岡空港を中心に、複数のライブ映像を楽しめます。"
+        data-url="https://www.youtube.com/watch?v=uuMhOREzUYA">
+
+        <div class="cardVisual visual-multi">
+          <span class="cardType">✈ 複数カメラ</span>
+          <span class="playMark">▶</span>
+        </div>
+
+        <div class="cardBody">
+          <h3>福岡空港＆ほかのライブ</h3>
+          <p>複数のカメラ映像を切り替えて楽しめます。</p>
+          <div class="cardFooter">
+            <span>福岡県</span>
+            <strong>この画面で見る</strong>
+          </div>
+        </div>
+      </button>
+
+    </div>
+  </section>
+
+  <section class="movieSection">
+    <div class="sectionLabel">🎬 夜景映像</div>
+
+    <a
+      class="movieCard"
+      href="https://www.youtube.com/watch?v=Q_vagSRoFdU"
+      target="_blank"
+      rel="noopener noreferrer">
+
+      <div class="movieIcon">🌌</div>
+
+      <div class="movieText">
+        <span>特別映像</span>
+        <h2>日本の空から眺める究極の夜景</h2>
+        <p>こちらはライブ配信ではなく、日本の夜景を楽しむ映像です。</p>
+      </div>
+
+      <div class="movieArrow">▶</div>
+    </a>
+  </section>
+
+  <section class="messageCard">
+    <div class="moon">🌙</div>
+    <p>
+      今夜、あなたが眺める光の向こうで、<br>
+      誰かも同じ空を見上げています。
+    </p>
+  </section>
+
+  <footer>
+    <a href="../">← トップページへ戻る</a>
+    <div>
+      NEGAIBOSHI.SITE<br>
+      星を見上げる、静かな場所。
+    </div>
+  </footer>
+
+</main>
+
+<script src="script.js?v=2"></script>
+</body>
+</html>
